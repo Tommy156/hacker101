@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Hacks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mac</th>
+      <th>Name</th>
+      <th>Heartbeat</th>
+      <th>Self latitude</th>
+      <th>Self longitude</th>
+      <th>Sanc latitude</th>
+      <th>Sanc longitude</th>
+      <th>Direction</th>
+      <th>Distance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hacks.each do |hack| %>
+      <tr>
+        <td><%= hack.mac %></td>
+        <td><%= hack.name %></td>
+        <td><%= hack.heartbeat %></td>
+        <td><%= hack.self_latitude %></td>
+        <td><%= hack.self_longitude %></td>
+        <td><%= hack.sanc_latitude %></td>
+        <td><%= hack.sanc_longitude %></td>
+        <td><%= hack.direction %></td>
+        <td><%= hack.distance %></td>
+        <td><%= link_to 'Show', hack %></td>
+        <td><%= link_to 'Edit', edit_hack_path(hack) %></td>
+        <td><%= link_to 'Destroy', hack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hack', new_hack_path %>

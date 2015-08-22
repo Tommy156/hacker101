@@ -1,0 +1,77 @@
+<%= javascript_include_tag "application" %>
+<h1>New Hack</h1>
+<% if true %>
+<% p = @hack %>
+<% p.mac        = params[:mac]%>
+<% p.name       = params[:name]%>
+<% p.heartbeat = params[:heartbeat] %>
+<% p.self_latitude  = params[:self_latitude]   %>
+<% p.self_longitude = params[:self_longitude] %>
+
+
+<% p.sanc_latitude  = 25.019246 %>
+<% p.sanc_longitude = 121.542264 %>
+
+<% self_la = p.self_latitude.to_f  %>
+<% self_lo = p.self_longitude.to_f %>
+<% sanc_la = p.sanc_latitude.to_f  %>
+<% sanc_lo = p.sanc_longitude.to_f %>
+
+<% dist_1 = (sanc_la - self_la) * 111267.47 %>
+<% dist_2 = (sanc_lo - self_lo) * 110892.76 %>
+<% dist_3 = (dist_1 + dist_2) %>
+
+<% arc  = (sanc_la - self_la)/(sanc_lo - self_lo) %>
+<% tmparc = arc %>
+<% tmp = 0%>
+<% if tmparc < 0 %>
+	<% tmparc = -tmparc %>
+<% end %>
+<% p.distance = dist_3 %>
+
+
+<% if tmparc > 3 %>
+	<% tmp = 71.56 %>
+<% elsif tmparc > 2 %>
+	<% tmp = 63.44 %>
+<% elsif tmparc > 1.5 %>
+	<% tmp = 56.31 %>
+<% elsif tmparc > 1 %>
+	<% tmp = 45.00 %>
+<% elsif tmparc > 0.8 %> 
+	<% tmp = 38.66 %>
+<% elsif tmparc > 0.4 %>
+	<% tmp = 21.80 %>
+<% elsif tmparc > 0.2 %>
+	<% tmp = 11.31 %>
+<% elsif  tmparc > 0 %>
+	<% tmp = 0 %>
+<% end %>
+
+<% if (sanc_la - self_la) > (sanc_lo - self_lo) %>
+	<% if arc > 0 %>
+		<% if (sanc_lo - self_lo) > 0 %>
+			<% p.direction = 90 - tmp %>
+		<% else %>
+			<% p.direction = 270 - tmp %>
+		<% end %>	
+	<% elsif arc < 0 %>
+		<% p.direction = 360 - tmp %>
+	<% end %>
+<% else %>
+	<% if arc > 0 %>
+		<% if (sanc_la - self_la) > 0 %>
+			<% p.direction = 90 - tmp %>
+		<% else %>
+			<% p.direction = 270 - tmp %>
+		<% end %>
+	<% elsif arc < 0 %>		
+		<% p.direction =  90 + tmp %>
+	<% end %>
+<% end %>
+
+
+<% if !p.name.nil? %>
+  <% p.save! %>
+<% end %>
+<% end %>
