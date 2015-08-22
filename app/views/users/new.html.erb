@@ -19,7 +19,7 @@
 
 <% dist_1 = (sanc_la - self_la) * 111267.47 %>
 <% dist_2 = (sanc_lo - self_lo) * 110892.76 %>
-<% dist_3 = (dist_1 + dist_2) %>
+<%= dist_3 = (dist_1 + dist_2) %>
 
 <% arc  = (sanc_la - self_la)/(sanc_lo - self_lo) %>
 <% tmparc = arc %>
@@ -27,7 +27,6 @@
 <% if tmparc < 0 %>
 	<% tmparc = -tmparc %>
 <% end %>
-<% p.distance = dist_3 %>
 
 
 <% if tmparc > 3 %>
