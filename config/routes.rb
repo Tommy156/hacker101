@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :hacks
   resources :users
   resources :usrs
   resources :resps
