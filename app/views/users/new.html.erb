@@ -17,9 +17,7 @@
 <% sanc_la = p.sanc_latitude  %>
 <% sanc_lo = p.sanc_longitude %>
 
-<% if false %>
-<% p.distance = (((sanc_la - self_la) * 111267.47 + (sanc_lo - self_lo) * 110892.76)/2).to_i %>
-<% end %>
+<% p.distance = (((sanc_la - self_la) * 111267.47 + (sanc_lo - self_lo) * 110892.76)/2) %>
 
 <% arc  = (sanc_la - self_la)/(sanc_lo - self_lo) %>
 <% tmparc = arc %>
