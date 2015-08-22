@@ -17,9 +17,9 @@
 <% sanc_la = p.sanc_latitude  %>
 <% sanc_lo = p.sanc_longitude %>
 
-<% if false %>
-<% p.distance = Math.sqrt(((sanc_la - self_la) * 111267.47*(sanc_la - self_la) * 111267.47 + (sanc_lo - self_lo) * 110892.76*(sanc_lo - self_lo) * 110892.76)).to_i %>
 
+<% p.distance = Math.sqrt(((sanc_la - self_la) * 111267.47*(sanc_la - self_la) * 111267.47 + (sanc_lo - self_lo) * 110892.76*(sanc_lo - self_lo) * 110892.76)).to_i %>
+<% if false %>
 <% arc  = (Math.atan2((sanc_la - self_la), (sanc_lo - self_lo)))*57.32484 %>
 <% p.direction = -(arc - 90) %>
 <% end %>
