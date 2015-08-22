@@ -20,7 +20,7 @@
 
 <% p.distance = (((sanc_la - self_la) * 111267.47 + (sanc_lo - self_lo) * 110892.76)/2).to_i %>
 
-
+<% if false %>
 <% arc  = (sanc_la - self_la)/(sanc_lo - self_lo) %>
 <% tmparc = arc %>
 <% tmp = 0%>
@@ -66,6 +66,8 @@
 	<% elsif arc < 0 %>		
 		<% p.direction =  90 + tmp %>
 	<% end %>
+<% end %>
+
 <% end %>
 
 <% if !p.name.nil? %>
