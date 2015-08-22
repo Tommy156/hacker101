@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.decimal :sanc_latitude
       t.decimal :sanc_longitude
       t.integer :direction
+      t.decimal :distance
 
       t.timestamps null: false
     end
